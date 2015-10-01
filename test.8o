@@ -1,0 +1,52 @@
+: main
+  :alias  alias v8
+  :unpack bar v7
+  i := bighex v2
+
+  load v1
+  loop
+    if v1 == 15 then jump v4
+    v1 += 1
+    while v3 key
+      :breakpoint
+      delay  += 1
+      buzzer := v1
+  again
+  save v1
+
+  sprite v1 v2 1
+  clear
+;
+
+: label
+: immediately-following-label
+  jump0
+  bcd
+  return
+
+: else-it-all
+  if v1 == 0 begin
+    v2 += v3
+  else
+    v1 += v3
+  end
+
+: next-label :next
+  
+
+#SuperChip
+
+scroll-down  15
+scroll-left
+scroll-right
+scroll-downwards #shouldn't match
+
+
+#XO-Chip syntax
+
+save v0 - v1
+load v7 - v4
+i := long 0xFFFF
+plane 1
+audio
+scroll-up 15

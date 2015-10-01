@@ -6,35 +6,43 @@ these rules will apply to any `*.8o` file.
 
 ##installation
 
-```
-git clone git@github.com:jackiekircher/vim-chip8.git
-```
-
-clone the repository and copy the files into your Vim directory's
-corresponding ftdetect, syntax, and indent folders. If you prefer to use
-Pathogen then that should work too.
-
-
-##optional keywords
-
-if you would like to enable highlighting of extra statements then please uncomment the following
-lines in syntax/8o.vim.
-
-```VimL
-hi def link chip8Functions  Function
-```
-
-this will add function highlighting to `save`, `load`, `sprite`, etc.
+clone the repository with
+`git clone git@github.com:jackiekircher/vim-chip8.git`
+or download the
+[latest release](https://github.com/jackiekircher/vim-chip8/releases)
+and copy the files into your Vim directory's corresponding ftdetect,
+syntax, and indent folders. If you prefer to use Pathogen then that
+should work too.
 
 
 ##SuperChip
 
-aside from the `exit` keyword all SuperChip statements need to be added
-in by uncommenting the following line in syntax/8o.vim
+the SuperChip instruction set is a backwards compatible extension of
+Chip8 that adds, among other features, a higher resolution graphics mode
+and screen scrolling. Syntax highlighting for these instructions is
+disabled by default but you can enable them by uncommenting the
+following line in syntax/8o.vim:
 
 ```VimL
-hi def link superChip8Functions  Function
+"let b:superChip = 1
 ```
+
+if you want to read more, go to the [SuperChip documentation](https://github.com/JohnEarnest/Octo/blob/gh-pages/docs/SuperChip.md)
+
+
+##XO-Chip
+
+the XO-Chip, much like the SuperChip, adds a variety of new instructions
+that are also backwards compatible with Chip8. This includes new instructions
+or updates to instructions that make working with an extended memory space
+much easier/possible. to enable these uncomment the following line in syntax/8o.vim:
+
+```VimL
+"let b:xoChip    = 1
+```
+
+for more information here is the full [XO-Chip specification](https://github.com/JohnEarnest/Octo/blob/gh-pages/docs/XO-ChipSpecification.md)
+
 
 ##contributions
 

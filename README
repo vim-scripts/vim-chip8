@@ -1,9 +1,46 @@
 This is a mirror of http://www.vim.org/scripts/script.php?script_id=5036
 
-Very basic syntax highlighting and indentation rules for Chip8 assembly. These rules will apply to any *.8o file.
+Syntax highlighting and indentation rules for Chip8 assembly. These rules will apply to any *.8o file.
+Full support for the SuperChip and XO-Chip instruction sets is available, but not enabled out-of-the-box. Read below for directions.
 
-Statement keywords like save, load, sprite, etc. are not highlighted by default but can be included by uncommenting the following lines in syntax/8o.vim:
-  hi def link chip8Functions  Function
-  hi def link superChip8Functions  Function
+Supported keywords:
+  conditionals:  begin, else, end, if, then, while
+      constants:  buzzer, const, delay, key
+       functions:  bcd, jump, jump0, load, save, sprite
+          repeats:  again, loop
+    statements:  :alias`, :breakpoint, :next, :unpack, clear, return
 
-I don&#039t have a lot of experience with Chip8 so if there are important rules that I missed or you have indentation problems please feel free to offer suggestions.
+There is also syntax highlighting for named subroutines, integer/hex/binary values, and comments.
+
+
+Auto-indentation will trigger for the following cases
+  * indent one shiftwidth on lines following `loop`
+  * indent one shiftwidth on lines following `while`
+  * unindent to matching `loop` when ending it with `again`
+  * indent one shiftwidth on lines following `if ... begin` and `else`
+  * unindent to matching `if ... begin` when ending it with `end`
+  * indent to zero for new labels
+  * indent one shiftwidth on lines following new labels
+  * indent to zero when ending a subroutine with `;`
+
+
+SuperChip
+
+An expanded set of keywords are supported for the SuperChip instruction set. To enable these uncomment out the following line in syntax/8o.vim:
+  "let b:superChip = 1
+
+Supported keywords:
+    constants:  bighex
+     functions:  hires, loadflags, lores, saveflags, scroll-down, scroll-left, scroll-right
+  statements:  exit
+
+
+XO-Chip
+
+Another set of keywords are available to support the XO-Chip instructions. These are also disabled by default but can be turned on by uncommenting out the following line in syntax/8o.vim:
+  "let b:superChip = 1
+
+Supported keywords:
+    constants:  long
+     functions:  plane, scroll-up
+  statements:  audio
